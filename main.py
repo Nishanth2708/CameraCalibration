@@ -12,7 +12,7 @@ if __name__ == '__main__':
     # parser.add_argument('--height', type=int, required=False, help='chessboard height size, default is 6')
     # parser.add_argument('--save_file', type=str, required=True, help='YML file to save calibration matrices')
 
-    SavedImages()
-    ret, mtx, dist, rvecs, tvecs = calibrate('.png',width=8, height=7)
+    #SavedImages()
+    ret, mtx, dist, rvecs, tvecs = calibrate(width=9, height=6)
     save_coefficients(mtx, dist, 'save.yml')
     print("Calibration is finished. RMS: ", ret)

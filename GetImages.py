@@ -3,7 +3,7 @@ import time,glob
 import os,sys,argparse
 
 
-def get_images(folder ='raw_images '):
+def get_images(folder ='raw_images'):
 
     video = cv2.VideoCapture(0)
     print("[INFO]: Video Starting........")
@@ -30,7 +30,7 @@ def get_images(folder ='raw_images '):
         count = 0
         images = []
 
-        while count < 10:
+        while count < 100:
 
             print("[INFO]: Reading image {:0}".format(count))
             ok, frame = video.read()
@@ -57,9 +57,11 @@ def get_images(folder ='raw_images '):
         sys.exit()
 
     i = 0
-
+   
     for img in images:
-        cv2.imwrite(os.path.join('./raw_images/image_{:>02}.jpg'.format(i)), img)
+
+        #print('img:',img)
+        cv2.imwrite(os.path.join('./raw_images/image_{:>02}.jpeg'.format(i)), img)
         i += 1
 
     print("[INFO]: All Images Saved in {} folder \n".format(str(folder)))
@@ -90,7 +92,8 @@ def SavedImages(folder = 'SavedImages'):
     path = get_images()
     print("[INFO]: Loading Images from {} folder".format(str(path)))
 
-    images = glob.glob('raw_images/*.jpg')
+    images = glob.glob('./raw_images/*.jpeg')
+    #print(images)
     img_counter = 0
 
     for img in images:
@@ -113,4 +116,8 @@ def SavedImages(folder = 'SavedImages'):
 
     return
 
+#get_images()
 
+if __name__ == '__main__':
+
+   SavedImages()
