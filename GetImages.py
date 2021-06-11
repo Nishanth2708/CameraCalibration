@@ -22,7 +22,7 @@ def get_images(folder ='raw_images'):
 
         print("[ERROR]: Dir already exists")
         time.sleep(1)
-        print("[INFO]: Remove or Rename Directory and Run again")
+        print("[INFO]: Remove or Rename Directory and try again")
         sys.exit()
 
     try:
@@ -69,7 +69,7 @@ def get_images(folder ='raw_images'):
 
     return folder
 
-def SavedImages(folder = 'SavedImages'):
+def SaveImages(folder = 'SavedImages'):
 
 
     try:
@@ -120,4 +120,4 @@ def SavedImages(folder = 'SavedImages'):
 
 if __name__ == '__main__':
 
-   SavedImages()
+   SaveImages()
