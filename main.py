@@ -25,12 +25,13 @@ if __name__ == '__main__':
     print("Calibration is finished. RMS: ", ret)
 
 
-    new_camera_matrix, roi = undistort('save.yml')
     save_coefficients(mtx, dist,'save.yml')
 
-    print("Calibration is finished. RMS: ", ret)
+    new_camera_matrix, roi = undistort('save.yml')
 
-    for img in glob.glob('./calibrated.png'):
+
+
+    for img in glob.glob('SavedImages/calibrated.png'):
         TextonImage(img)
 
 

@@ -123,8 +123,12 @@ def load_coefficients ( path ):
 
 def undistort ( path, storage_file =0 ):
 
+    print("[INFO]: Undistorting Started...")
+
     mtx,dist = load_coefficients(path)
-    img = cv2.imread('SavedImages/saved_frame_4.png')
+
+    print("[INFO]: Loaded image...")
+    img = cv2.imread('SavedImages/saved_frame_1.png')
     h, w = img.shape[:2]
 
     newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 1, (w, h))
@@ -132,6 +136,8 @@ def undistort ( path, storage_file =0 ):
 
     x, y, w, h = roi
     dst = dst[y:y + h, x:x + w]
+
+    print(dst.shape)
 
     np.save(savedir+'newcam_mtx.npy', newcameramtx)
     np.save(savedir+'roi.npy', roi)
