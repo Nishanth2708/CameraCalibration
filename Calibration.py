@@ -163,6 +163,7 @@ def undistort ( path, storage_file =0 ):
 def TextonImage ( path_image ):
 
     img = cv2.imread(path_image)
+
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Find the chess board corners
