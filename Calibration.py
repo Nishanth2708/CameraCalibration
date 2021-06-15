@@ -124,7 +124,7 @@ def load_coefficients ( path ):
 def undistort ( path, storage_file =0 ):
 
     mtx,dist = load_coefficients(path)
-    img = cv2.imread('SavedImages/image_06.jpeg')
+    img = cv2.imread('SavedImages/saved_frame_4.png')
     h, w = img.shape[:2]
 
     newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 1, (w, h))
