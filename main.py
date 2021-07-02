@@ -1,10 +1,21 @@
-import glob
+
 from Calibration import *
-from GetImages import SaveImages
-#from PerspectiveCalibration import *
 import argparse
 
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Name     : main.py
+Author   : Nishanth Reddy Vanipenta
+Contact  : nishanthv@zdmetalproducts.com
+Time     : 07/02/2021 8:00 A.M
+Desc     : Initialization of Camera Calibration: Loading and Saving Camera Data
+
+"""
+
+
 if __name__ == '__main__':
+
     parser = argparse.ArgumentParser(description='Camera calibration')
 
 
@@ -29,13 +40,7 @@ if __name__ == '__main__':
 
     new_camera_matrix, roi = undistort('save.yml')
 
-
-
     for img in glob.glob('SavedImages/calibrated.png'):
         TextonImage(img)
 
-
-    # Convert2dtoXYZ()
-   #
-   #  # image = str(image)
 

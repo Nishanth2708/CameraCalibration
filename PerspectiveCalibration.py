@@ -1,14 +1,30 @@
 
-'''Todo ----> This Part of Code needs to be tuned by getting
-            the depth estimate for N number of points assumed, followed
-            by measuring extrnisic parameters wrt the world frame and camera
-            coordinate system.
-             '''
+
 import numpy as np
 from Calibration import load_coefficients
 import cv2, os
 
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Name    : PerspectiveCalibration.py
+Author  : Nishanth Reddy Vanipenta
+Contact : nishanthv@zdmetalproducts.com
+Time    : 07/02/2021 8:00 A.M
+Desc    : 2D to 3D transformation
+
+"""
+
 # global writeValues
+
+"""
+####################### Todo #############################
+----> This Part of Code needs to be tuned by getting
+---->   the depth estimate for N number of points assumed, followed
+---->    by measuring extrnisic parameters wrt the world frame and camera
+---->   coordinate system. 
+
+"""
 
 writeValues = True
 
@@ -54,39 +70,36 @@ if os.path.isdir('camera_data'):
         # print(world_points.shape,world_points)
 
         worldPoints = np.array([
-                                [21.5, 0, 0],
-                                [43, 0, 0],
-                                [64.5, 0, 0],
-                                [21.5*4, 0, 0],
-                                [21.5*5, 0, 0],
-                                [21.5*6, 0, 0],
-                                [21.5*7, 0, 0],
-                                [21.5*8, 0, 0],
+                                [21.5, 21.5, 762],
+                                [43, 21.5, 762],
+                                [64.5, 21.5, 762],
+                                [21.5*4, 21.5, 762],
+                                [21.5*5, 21.5, 762],
+                                [21.5*6, 21.5, 762],
+                                [21.5*7, 21.5, 762],
+                                [21.5*8, 21.5, 762],
                                ], dtype=np.float32)
-        imgPoints = np.array([[173.71376, 142.48972],
 
-          [215.16212,142.72597],
-
-          [256.37875,143.1675 ],
-
-          [296.69202,143.25449],
-
-          [337.10135,143.55455],
-
-          [377.21487,143.83162],
-
-          [416.9865 ,144.08597],
-
-          [456.19937,144.4007 ],],dtype=np.float32)
+        imgPoints = np.array([[107,67],
+          [153,67],
+          [199,66],
+          [245,66],
+          [292,66],
+          [340,65],
+          [387 ,65],
+          [436,65 ],
+          [484,64],],
+          dtype=np.float32)
 
         ret, rvec1, tvec1 = cv2.solvePnP(worldPoints,imgPoints,new_camera_matrix,distortion_matrix)
 
-        print("pnp rvec1 - Rotation")
-        print(rvec1)
+        print("pnp rvec1 - Rotation: \n",rvec1)
+
         if writeValues == True: np.save(savedir + 'rvec1.npy', rvec1)
 
-        print("pnp tvec1 - Translation")
-        print(tvec1)
+        print("pnp tvec1 - Translation: \n",tvec1)
+
+
         if writeValues == True: np.save(savedir + 'tvec1.npy', tvec1)
 
         R_mtx, jac = cv2.Rodrigues(rvec1)
@@ -121,8 +134,6 @@ if os.path.isdir('camera_data'):
             world_point = np.linalg.inv(R_mtx).dot(sr)
 
             print(world_point)
-
-
 
         #     print("Forward: From World Points, Find Image Pixel")
         #     XYZ1 = np.array([[worldPoints[i, 0], worldPoints[i, 1], worldPoints[i, 2], 1]], dtype=np.float32)
@@ -178,6 +189,4 @@ if os.path.isdir('camera_data'):
         # for i in range(0, total_points_used):
         #     print("Point " + str(i))
         #     print("S: " + str(s_describe[i]) + " Mean: " + str(s_mean) + " Error: " + str(s_describe[i] - s_mean))
-
-
     Convert2dtoXYZ()

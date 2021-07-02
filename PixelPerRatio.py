@@ -1,9 +1,21 @@
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
+
+#!/usr/bin/env python
+# coding:utf-8
+
+"""
+Name     : PixelPerRatio.py
+Author   : Nishanth Reddy Vanipenta
+Contact  : nishanthv@zdmetalproducts.com
+Time     : 07/02/2021 8:00 A.M
+Desc     : [Note]: To observe Pixels per inch of a ratio
+
+"""
 
 path = 'SavedImages/saved_frame_0.png'
 
+img = cv2.imread('Scaled_Up_scale_images.png')
 
 def TextonImage(path_image='SavedImages/saved_frame_5.png'):
 
@@ -55,31 +67,9 @@ def TextonImage(path_image='SavedImages/saved_frame_5.png'):
 # x,y = TextonImage()
 
 
-import cv2
-
-image = cv2.imread('ruler1.png')
-image = cv2.resize(image,(238,353))
-print(image.shape)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-canny = cv2.Canny(gray, 130, 255, 1)
-
-cnts = cv2.findContours(canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-
-for c in cnts:
-    cv2.drawContours(image,[c], 0, (0,255,0), 1)
-
-cv2.imshow("result", image)
-cv2.imwrite('result.png',image)
-cv2.waitKey(0)
-
 a = []
 b = []
 
-img = cv2.imread('ruler1.png')
-img = cv2.resize(img,(238,353))
-
-print(img.shape)
 def on_EVENT_LBUTTONDOWN(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         xy = "%d,%d" % (x, y)
@@ -95,5 +85,42 @@ cv2.namedWindow("image")
 cv2.setMouseCallback("image", on_EVENT_LBUTTONDOWN)
 cv2.imshow("image", img)
 cv2.waitKey(0)
+
+
+def PixelPerMetric(observed_radius):
+
+    actual_diameter =  ( observed_radius - 0.75 ) * 2
+    observed_ppm = 100/43
+
+    Real_diameter = ( actual_diameter / observed_ppm )
+
+    print(Real_diameter)
+
+    return Real_diameter
+
+
+
+
+
+# print(image.shape)
+# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# canny = cv2.Canny(gray, 130, 255, 1)
+#
+# cnts = cv2.findContours(canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+# cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+#
+# for c in cnts:
+#     cv2.drawContours(image,[c], 0, (0,255,0), 1)
+#
+# cv2.imshow("result", image)
+# cv2.imwrite('result.png',image)
+# cv2.waitKey(0)
+#
+
+#
+# img = cv2.imread('SavedImages/saved_frame_0.png')
+# img = cv2.resize(img,(238,353))
+#
+# print(img.shape)
 
 

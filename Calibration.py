@@ -2,6 +2,19 @@ import numpy as np
 import cv2
 import glob,os
 
+
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Name     : Calibration.py
+Author   : Nishanth Reddy Vanipenta
+Contact  : nishanthv@zdmetalproducts.com
+Time     : 07/02/2021 8:00 A.M
+Desc     : Functions: Calibration and UnDistortion of frames
+
+"""
+
+
 # termination criteria
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
@@ -57,6 +70,9 @@ def calibrate (width=9, height=6):
             corners2 = cv2.cornerSubPix(gray, corners, (11, 11),
                                         (-1, -1), criteria)
             imgpoints.append(corners2)
+
+            print(corners2)
+
 
             # Draw and display the corners
             img = cv2.drawChessboardCorners(img, (width, height), corners2, ret)
@@ -128,7 +144,7 @@ def undistort ( path, storage_file =0 ):
     mtx,dist = load_coefficients(path)
 
     print("[INFO]: Loaded image...")
-    img = cv2.imread('SavedImages/saved_frame_1.png')
+    img = cv2.imread('SavedImages/saved_frame_0.png')
     h, w = img.shape[:2]
 
     newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 1, (w, h))
@@ -192,6 +208,7 @@ def TextonImage ( path_image ):
         for i in corners2:
             for j in corners2:
                 for k in range(0, len(j)):
+                    print(int(j[k][0]),int(j[k][1]))
                     cv2.putText(img, "{}".format(int(j[k][0])),
                                                 (int(j[k][0]), int(j[k][1])),
                                                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 255), 1
@@ -202,15 +219,3 @@ def TextonImage ( path_image ):
 
         cv2.imshow('img', img)
         cv2.imwrite('chessboardcorners.png', img)
-
-
-
-
-
-
-
-
-
-
-
-

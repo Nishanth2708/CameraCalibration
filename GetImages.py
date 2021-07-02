@@ -1,7 +1,18 @@
+
 import cv2
 import time,glob
-import os,sys,argparse
+import os,sys
 
+#!/usr/bin/env python
+# coding:utf-8
+"""
+Name     : GetImages.py
+Author   : Nishanth Reddy Vanipenta
+Contact  : nishanthv@zdmetalproducts.com
+Time     : 07/02/2021 8:00 A.M
+Desc     : Capture and Saves Frames based on Key Press for Calibration
+
+"""
 
 def get_images(folder ='raw_images'):
 
