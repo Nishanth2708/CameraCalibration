@@ -22,7 +22,7 @@ Hence, inorder to correct the distortions that are internal to the camera, I hav
    
        1. All your images will be saved onto raw_images folder
        2. Once capturing the images are done, all the frames in raw_images folders are displayed one by one
-       3. Now choose, 25-30 best frames for calibration based on keypress(space bar) and ignore the ones that are bad
+       3. Now choose, 10-20 best frames for calibration based on keypress(space bar) and ignore the ones that are bad
        4. All your saved images will be saved into SavedImages folder
 
   # Calibration 
