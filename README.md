@@ -11,7 +11,7 @@ OpenCv, Numpy and glob or an alternative to read images from a directory
 Not all Pinhole Camera Models are accurate, especially when using a lens along with the camera. This always induces the common distortions such as Barrel and Tangential Distortion.
 In this regard, the pixels would be curved or distorted on image and will not be squared. This impact, plays a significant role for various application where precision must be robust.
 
-Hence, inorder to correct the distortions that are internal to the camera, I have developed this repository which works for any camera modules as a reference to zhangs method.\
+Hence, inorder to correct the distortions that are internal to the camera, I have developed this repository which works for any camera modules as a reference to zhangs method.
 
 # Steps to Run
 
