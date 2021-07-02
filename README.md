@@ -32,7 +32,7 @@ Hence, inorder to correct the distortions that are internal to the camera, I hav
        2. Iterates through the images in SavedImages folder -- Camera
        3. Calibration of Camera starts and generates CameraData in save.yml file
 
-       ## Undistort 
+       # Undistort 
        4. Takes first image from, Saved folder and undistort and saves it as "calibrated.png" into it's root directory.
     
     
